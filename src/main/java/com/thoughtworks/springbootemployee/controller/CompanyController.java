@@ -40,8 +40,24 @@ public class CompanyController {
     public List<Company> getCompanyByPage(@RequestParam(name = "page" , required = false) Integer page, @RequestParam(name = "pageSize",required = false) Integer pageSize) {
         CompanyData companyData = new CompanyData();
         if (page != null && pageSize != null) {
-            return companyData.getCompanies().subList(page-1, pageSize-1);
+            return companyData.getCompanies().subList(page- 1, pageSize-1);
         }
         return companyData.getCompanies();
+    }
+
+    @PostMapping
+    public String addCompany(@RequestBody Company company){
+        String message = "fail";
+        List<Company> companies = new ArrayList<>();
+
+        if(company != null){
+            companies.add(company);
+        }
+
+        if (companies.contains(company)){
+            return message = "success";
+        }
+
+        return message;
     }
 }

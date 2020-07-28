@@ -6,11 +6,25 @@ public class Company {
     private int id;
     private String companyName;
     private List<Employee> employees;
-    private int empoyeesNumber = 0;
+
+
+    private int empoyeesNumber;
 
     public Company(int id, String companyName) {
         this.id = id;
         this.companyName = companyName;
+    }
+
+    public Company(){
+
+    }
+
+    public int getEmpoyeesNumber() {
+        return empoyeesNumber;
+    }
+
+    public void setEmpoyeesNumber(int empoyeesNumber) {
+        this.empoyeesNumber = empoyeesNumber;
     }
 
     public int getId() {
