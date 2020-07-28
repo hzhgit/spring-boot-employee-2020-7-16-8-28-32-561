@@ -6,8 +6,6 @@ public class Company {
     private int id;
     private String companyName;
     private List<Employee> employees;
-
-
     private int empoyeesNumber;
 
     public Company(int id, String companyName) {
@@ -15,7 +13,14 @@ public class Company {
         this.companyName = companyName;
     }
 
-    public Company(){
+    public Company(int id, String companyName, int empoyeesNumber, List<Employee> employees) {
+        this.id = id;
+        this.companyName = companyName;
+        this.empoyeesNumber = empoyeesNumber;
+        this.employees = employees;
+    }
+
+    public Company() {
 
     }
 
