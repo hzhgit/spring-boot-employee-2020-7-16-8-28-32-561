@@ -27,6 +27,7 @@ public class EmployeeController {
             @RequestParam(name = "page", required = false) Integer page,
             @RequestParam(name = "pageSize", required = false) Integer pageSize,
             @RequestParam(name = "gender", required = false) String gender) {
+
         List<Employee> employees = new EmployeeData().getCompanies();
         if (page != null && pageSize != null) {
             return employees.subList(page - 1, pageSize - 1);
@@ -41,4 +42,16 @@ public class EmployeeController {
         return employees;
     }
 
+    @PostMapping
+    public String addEmploee(@RequestBody Employee employee) {
+        String message = "fail";
+        List<Employee> employees = new EmployeeData().getCompanies();
+        if (employee != null) {
+            employees.add(employee);
+        }
+        if (employees.contains(employee)) {
+            return message = "success";
+        }
+        return message;
+    }
 }
