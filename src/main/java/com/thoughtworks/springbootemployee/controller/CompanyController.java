@@ -73,4 +73,16 @@ public class CompanyController {
         }
         return company;
     }
+
+    @DeleteMapping("/{id}")
+    public String deleteCompanyEmployees(@PathVariable Integer id) {
+        List<Company> companies = new CompanyData().getCompanies();
+        for (int i = 0; i < companies.size(); i++) {
+            if (companies.get(i).getId() == id) {
+                companies.get(i).setEmployees(new ArrayList<>());
+                companies.get(i).setEmpoyeesNumber(0);
+            }
+        }
+        return "delete success!";
+    }
 }
