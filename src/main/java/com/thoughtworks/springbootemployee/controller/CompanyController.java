@@ -64,7 +64,6 @@ public class CompanyController {
     @PutMapping("/{id}")
     public Company updateCompanyById(@PathVariable Integer id, @RequestBody Company company) {
         List<Company> companies = new CompanyData().getCompanies();
-        companies.add(new Company(1, "OOCl"));
         for (int i = 0; i < companies.size(); i++) {
             if(companies.get(i).getId() == company.getId()) {
                 companies.set(i, company);

@@ -54,4 +54,30 @@ public class EmployeeController {
         }
         return message;
     }
+
+    @PutMapping("/{id}")
+    public Employee updateEmploeeById(@PathVariable Integer id, @RequestBody Employee employee) {
+        List<Employee> employees = new EmployeeData().getCompanies();
+        for (int index = 0; index < employees.size(); index++) {
+            if (employees.get(index).getId() == id) {
+                employees.set(index, employee);
+                break;
+            }
+        }
+        return employee;
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteEmploeeById(@PathVariable Integer id) {
+        String message = "fail";
+        List<Employee> employees = new EmployeeData().getCompanies();
+        Employee deleteEmployee = employees.stream().filter(employee -> {
+            return employee.getId() == id;
+        }).findFirst().orElse(null);
+
+        if(deleteEmployee == null){
+            return message;
+        }
+        return  message = "success";
+    }
 }
